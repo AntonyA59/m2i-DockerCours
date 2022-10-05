@@ -54,7 +54,7 @@ function TodoListCard() {
             <AddItemForm onNewItem={onNewItem} />
             {items.length === 0 && (
                 //<p className="text-center">No items yet! Add one above!</p>
-                <p className="text-center">You have no todo items yet! Add one above!</p> // update
+                <p className="text-center">You have no items todo list yet! Add one above!</p> // update
             )}
             {items.map(item => (
                 <ItemDisplay
@@ -153,9 +153,8 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         }
                     >
                         <i
-                            className={`far ${
-                                item.completed ? 'fa-check-square' : 'fa-square'
-                            }`}
+                            className={`far ${item.completed ? 'fa-check-square' : 'fa-square'
+                                }`}
                         />
                     </Button>
                 </Col>
