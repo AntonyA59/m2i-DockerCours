@@ -1,5 +1,5 @@
 # Commencer un projet node
-$ nmp init
+$ npm init
 
 # Création du fichier index.js 
 const EXPRESS = require('express');
