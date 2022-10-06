@@ -166,19 +166,18 @@ http://localhost:3000
 
 # Création d'un fichier Docker-Compose a la racine de notre app
 
-version: '3.7'
-
 services:
-    db:
+    mysql:
         image: mysql:5.7
-        container_name: mysql-container_name
+        container_name: my_docker_sql
         volumes:
             - todo-mysql-data:/var/lib/mysql
         environment:
-            - MYSQL_ROOT_PASSWORD:secret
-            - MYSQL_DATABASE:todos
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: todos
     app:
         image: node:12-alpine
+        container_name: my_docker_app
         command: sh -c "yarn install && yarn run dev"
         ports:
             - 3000:3000
@@ -186,10 +185,11 @@ services:
         volumes:
             - ./:/app
         environment:
-            - MYSQL_HOST:mysql
-            - MYSQL_USER:root
-            - MYSQL_PASSWORD:secret
-            - MYSQL_DB:todos
+            MYSQL_HOST: mysql
+            MYSQL_USER: root
+            MYSQL_PASSWORD: secret
+            MYSQL_DB: todos
+
 volumes:
     todo-mysql-data:
 
