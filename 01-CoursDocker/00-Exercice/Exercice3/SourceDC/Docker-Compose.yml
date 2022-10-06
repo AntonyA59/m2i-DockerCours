@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: my_docker_sql
+    volumes:
+      - php-mysql-data:/var/lib/mysql
+      - ./articles.sql:/docker-entrypoint-initdb.d/articles.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+
+  app:
+    image: docker_php_image
+    container_name: my_docker_php
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/var/www/html
+
+volumes:
+  php-mysql-data:
